@@ -1,89 +1,77 @@
 \documentclass[a4paper,11pt,openright]{article}
 
+% Keep the document limited to packages available in a standard TeX installation.
 \usepackage[T1]{fontenc}
-%\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
-
-
-\usepackage{blindtext} % Package to generate dummy text throughout this template 
-
-\usepackage[sc]{mathpazo} % Use the Palatino font
-\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
-\linespread{1} % Line spacing - Palatino needs more space between lines
-\usepackage{microtype} % Slightly tweak font spacing for aesthetics
-
-\usepackage[english]{babel} % Language hyphenation and typographical rules
+\usepackage[english]{babel}
 \usepackage[a4paper,top=3cm,bottom=2cm,left=2.5cm,right=2.5cm]{geometry}
-%\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
-\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
-\usepackage{booktabs} % Horizontal rules in tables
+\usepackage{fancyhdr}
 
-\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
+% The Scopus export contains a few Unicode math symbols that pdfLaTeX does
+% not know by default.  Give them portable LaTeX representations.
+\DeclareUnicodeCharacter{03B1}{\ensuremath{\alpha}}
+\DeclareUnicodeCharacter{03B3}{\ensuremath{\gamma}}
+\DeclareUnicodeCharacter{03B2}{\ensuremath{\beta}}
+\DeclareUnicodeCharacter{03B7}{\ensuremath{\eta}}
+\DeclareUnicodeCharacter{03C0}{\ensuremath{\pi}}
+\DeclareUnicodeCharacter{03C1}{\ensuremath{\rho}}
+\DeclareUnicodeCharacter{03C8}{\ensuremath{\psi}}
+\DeclareUnicodeCharacter{03C7}{\ensuremath{\chi}}
+\DeclareUnicodeCharacter{03C4}{\ensuremath{\tau}}
+\DeclareUnicodeCharacter{03C6}{\ensuremath{\phi}}
+\DeclareUnicodeCharacter{03D5}{\ensuremath{\varphi}}
+\DeclareUnicodeCharacter{039B}{\ensuremath{\Lambda}}
+\DeclareUnicodeCharacter{039E}{\ensuremath{\Xi}}
+\DeclareUnicodeCharacter{03A8}{\ensuremath{\Psi}}
+\DeclareUnicodeCharacter{03D2}{\ensuremath{\Upsilon}}
+\DeclareUnicodeCharacter{03BD}{\ensuremath{\nu}}
+\DeclareUnicodeCharacter{03BC}{\ensuremath{\mu}}
+\DeclareUnicodeCharacter{2113}{\ensuremath{\ell}}
+\DeclareUnicodeCharacter{221A}{\ensuremath{\sqrt{\mathstrut}}}
+\DeclareUnicodeCharacter{2192}{\ensuremath{\to}}
+\DeclareUnicodeCharacter{00B1}{\ensuremath{\pm}}
+\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
+\DeclareUnicodeCharacter{2013}{--}
+\DeclareUnicodeCharacter{2032}{\ensuremath{\prime}}
+\DeclareUnicodeCharacter{2217}{*}
+\DeclareUnicodeCharacter{204E}{*}
+\DeclareUnicodeCharacter{2019}{'}
+\DeclareUnicodeCharacter{2044}{/}
+\DeclareUnicodeCharacter{2215}{/}
+\DeclareUnicodeCharacter{00AF}{-}
+\DeclareUnicodeCharacter{203E}{-}
+\DeclareUnicodeCharacter{00A0}{\ }
+\DeclareUnicodeCharacter{202F}{\ }
+\DeclareUnicodeCharacter{2009}{\,}
+\DeclareUnicodeCharacter{1D403}{D}
+\DeclareUnicodeCharacter{1D437}{D}
+\DeclareUnicodeCharacter{1D460}{s}
+\DeclareUnicodeCharacter{1D719}{\ensuremath{\phi}}
 
-\usepackage{enumitem} % Customized lists
-\setlist[itemize]{noitemsep} % Make itemize lists more compact
+\linespread{1}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
 
-\usepackage{abstract} % Allows abstract customization
-\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
-\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+% BibTeX is used because it is available in the build environment.
+\bibliographystyle{unsrt}
 
-\usepackage{titlesec} % Allows customization of titles
-\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
-\renewcommand\thesubsection{\roman{subsection}} % roman numerals for subsections
-\titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
-\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
-
-\usepackage{fancyhdr} % Headers and footers
-\pagestyle{fancy} % All pages have headers and footers
-\fancyhead{} % Blank out the default header
-\fancyfoot{} % Blank out the default footer
-%\fancyfoot[RO,LE]{\thepage} % Custom footer text
-
-\usepackage{titling} % Customizing the title section
-
-\usepackage{hyperref} % For hyperlinks in the PDF
-\usepackage[autostyle]{csquotes}%bibliografy
-%\usepackage[style=numeric-comp,sorting=none,useprefix,hyperref,backend=bibtex]{biblatex}
-\usepackage[
-    style=numeric-comp,
-    sorting=none,
-    useprefix,
-    hyperref,
-    backend=biber
-]{biblatex}
-\addbibresource{bib.bib}%bibliograf
-%----------------------------------------------------------------------------------------
-%	TITLE SECTION
-%----------------------------------------------------------------------------------------
-
-\setlength{\droptitle}{-4\baselineskip} % Move the title up
-
-\pretitle{\begin{center}\huge\bfseries} % Article title formatting
-	\posttitle{\end{center}} % Article title closing formatting
-\title{Davide Fiorina Publication List\\ Updated \today} % Article title
+\title{Davide Fiorina Publication List\\ Updated \today}
 \author{%
-	\textsc{D. Fiorina$^{(1)}$} \\[1ex] % Your name
-	\normalsize (1) Gran Sasso Science Insitute \& INFN LNGS \\
+    \textsc{D. Fiorina$^{(1)}$} \\[1ex]
+    \normalsize (1) Gran Sasso Science Institute \& INFN LNGS
 }
-\date{} % Leave empty to omit a date
+\date{}
 
-%\renewcommand{\maketitlehookd}{%
-%\begin{abstract}
-%\noindent \blindtext % Dummy abstract text - replace \blindtext with your abstract text
-%\end{abstract}
-%}
-%\DeclareUnicodeCharacter{0301}{*************************************}
-%----------------------------------------------------------------------------------------
 \pagenumbering{gobble}
 \begin{document}
 
-	% Print the title
-	\maketitle
-
-
+\maketitle
 
 \nocite{*}
-\printbibliography
-
+\catcode`\&=12 % Treat raw ampersands from the export as ordinary text.
+\catcode`\_=12 % Treat raw underscores from the export as ordinary text.
+\catcode`\$=12 % Treat raw dollar signs from the export as ordinary text.
+\bibliography{bib}
 
 \end{document}
